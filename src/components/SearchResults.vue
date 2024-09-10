@@ -9,7 +9,6 @@ defineEmits(['load-more'])
 
 <template>
     <div class="wrapper">
-        <h1>Search Results</h1>
         <div class="results-container">
             <div class="results">
                 <div v-for="result in results" :key="result.id">
@@ -33,7 +32,7 @@ defineEmits(['load-more'])
     align-items: center;
     width: 100%;
     justify-content: center;
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 
 .results-container {
@@ -48,6 +47,27 @@ defineEmits(['load-more'])
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
+}
+
+.results div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+}
+
+.results div:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .results {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }
 
 .pagination {

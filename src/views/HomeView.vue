@@ -9,10 +9,10 @@ const loading = ref(false)
 const pagination = ref({ offset: 0, count: 10, totalCount: 0 })
 const searchTerm = ref('')
 
-const search = async (term: string, append = false) => {
+const search = async (append = false) => {
   loading.value = true
   try {
-    const response = await searchGifs({ term, limit: pagination.value.count, offset: pagination.value.offset })
+    const response = await searchGifs({ term: searchTerm.value, limit: pagination.value.count, offset: pagination.value.offset })
     if (append) {
       searchResults.value = [...searchResults.value, ...response.data]
     } else {
@@ -30,7 +30,7 @@ const search = async (term: string, append = false) => {
 const loadMore = () => {
   if (pagination.value.offset + pagination.value.count >= pagination.value.totalCount) return
   pagination.value.offset += pagination.value.count
-  search(searchTerm.value, true)
+  search(true)
 }
 
 const clear = () => {
