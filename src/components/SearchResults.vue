@@ -1,4 +1,5 @@
 <script setup>
+import IconLoadMore from './icons/IconLoadMore.vue'
 defineProps({
     results: Array,
     loading: Boolean,
@@ -19,7 +20,9 @@ defineEmits(['load-more'])
             <p v-if="loading">Loading...</p>
             <p v-else-if="results.length === 0">No results found</p>
             <div class="pagination" v-else>
-                <button @click="$emit('load-more')">Load more</button>
+                <button @click="$emit('load-more')">
+                    <IconLoadMore />
+                </button>
             </div>
 
         </div>
@@ -75,5 +78,21 @@ defineEmits(['load-more'])
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.pagination button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination button svg {
+    width: 50px;
+    height: 50px;
+
 }
 </style>
