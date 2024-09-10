@@ -12,9 +12,11 @@ const searchTerm = defineModel()
         <input type="search" placeholder="Search gifs" v-model="searchTerm">
         <button type="submit" class="search-btn">
             <IconSearch />
+            <ToolTip text="Search" />
         </button>
         <button v-if="searchTerm" type="button" @click="$emit('clear')" class="clear-btn">
             <IconClear />
+            <ToolTip text="Clear" />
         </button>
     </form>
 </template>

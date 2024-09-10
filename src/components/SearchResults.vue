@@ -22,6 +22,7 @@ defineEmits(['load-more'])
             <div class="pagination" v-else>
                 <button @click="$emit('load-more')">
                     <IconLoadMore />
+                    <ToolTip text="Load more" />
                 </button>
             </div>
 
